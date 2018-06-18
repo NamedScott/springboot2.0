@@ -1,9 +1,15 @@
 package com.example.service.impl;
 
+
+import com.example.common.constant.Constant;
+import com.example.dao.UserInfoMapper;
+import com.example.model.UserInfo;
+import com.example.model.example.UserInfoExample;
 import com.example.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -17,7 +23,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public List<UserInfo> selectAll() {
-
-        return userInfoMapper.selectAll();
+        UserInfoExample example = new UserInfoExample();
+        example.createCriteria().andValidStatusIn(Arrays.asList(Constant.VALID_STATUS_YES));
+        return userInfoMapper.selectByExample(example);
     }
 }

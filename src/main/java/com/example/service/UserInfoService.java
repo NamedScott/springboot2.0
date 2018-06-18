@@ -1,6 +1,8 @@
 package com.example.service;
 
 
+import com.example.model.UserInfo;
+
 import java.util.List;
 
 /**

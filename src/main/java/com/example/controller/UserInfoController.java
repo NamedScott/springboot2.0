@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.model.UserInfo;
 import com.example.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
