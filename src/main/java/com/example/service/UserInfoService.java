@@ -2,6 +2,7 @@ package com.example.service;
 
 
 import com.example.model.UserInfo;
+import com.example.vo.UserInfoVo;
 
 import java.util.List;
 
@@ -11,4 +12,6 @@ import java.util.List;
 public interface UserInfoService {
 
     public List<UserInfo> selectAll();
+
+    UserInfoVo getUserAndAddressById(String userId);
 }

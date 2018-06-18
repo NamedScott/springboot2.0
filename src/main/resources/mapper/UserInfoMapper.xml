@@ -363,4 +363,37 @@
       create_operator = #{createOperator,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <resultMap id="userInfoAndAddressMap" type="com.example.vo.UserInfoVo">
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="user_mobile" property="userMobile" jdbcType="VARCHAR" />
+    <result column="user_job" property="userJob" jdbcType="VARCHAR" />
+    <result column="user_description" property="userDescription" jdbcType="VARCHAR" />
+    <result column="valid_status" property="validStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="create_operator" property="createOperator" jdbcType="VARCHAR" />
+
+    <!--address -->
+
+    <result column="userAddress.user_id" property="userId" jdbcType="BIGINT" />
+    <result column="userAddress.country" property="country" jdbcType="VARCHAR" />
+    <result column="userAddress.city" property="city" jdbcType="VARCHAR" />
+    <result column="userAddress.province" property="province" jdbcType="VARCHAR" />
+    <result column="userAddress.address_detail" property="addressDetail" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="getUserAndAddressById" resultType="com.example.vo.UserInfoVo">
+
+      select ui.*,
+          ua.user_id as  "userAddress.userId",
+          ua.country as  "userAddress.country",
+          ua.city as  "userAddress.city" ,
+          ua.province as "userAddress.province",
+          ua.address_detail as "userAddress.addressDetail"
+      from user_info ui LEFT JOIN  user_address ua on ui.id = ua.id where ui.id =#{userId}
+    
+  </select>
 </mapper>

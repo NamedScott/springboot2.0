@@ -3,6 +3,8 @@ package com.example.dao;
 import com.example.model.UserInfo;
 import com.example.model.example.UserInfoExample;
 import java.util.List;
+
+import com.example.vo.UserInfoVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserInfoMapper {
@@ -93,4 +95,8 @@ public interface UserInfoMapper {
      * @mbggenerated Mon Jun 18 12:38:37 CST 2018
      */
     int updateByPrimaryKey(UserInfo record);
+
+
+
+    UserInfoVo getUserAndAddressById(String userId);
 }

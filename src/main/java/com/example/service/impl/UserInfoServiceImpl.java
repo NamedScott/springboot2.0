@@ -6,6 +6,7 @@ import com.example.dao.UserInfoMapper;
 import com.example.model.UserInfo;
 import com.example.model.example.UserInfoExample;
 import com.example.service.UserInfoService;
+import com.example.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +27,10 @@ public class UserInfoServiceImpl implements UserInfoService {
         UserInfoExample example = new UserInfoExample();
         example.createCriteria().andValidStatusIn(Arrays.asList(Constant.VALID_STATUS_YES));
         return userInfoMapper.selectByExample(example);
+    }
+
+    @Override
+    public UserInfoVo getUserAndAddressById(String userId) {
+        return userInfoMapper.getUserAndAddressById(userId);
     }
 }
